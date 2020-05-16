@@ -1,0 +1,30 @@
+-- #1 SELECT * FROM customers;
+-- #2 SELECT country FROM customers group by country;
+-- #3 SELECT * FROM customers WHERE customerid LIKE 'BL%';
+-- #4 SELECT * FROM orders LIMIT 100;
+-- #5 SELECT * FROM customers WHERE postalcode IN (1010, 12209, 05023);
+-- #6 SELECT * FROM orders WHERE shipregion != 'NULL';
+-- #7 SELECT * FROM customers ORDER BY country, city;
+-- #8 INSERT INTO customers (customerid, companyname, contactname, contacttitle, 
+-- address, city, region, postalcode, country, phone, fax, image, imagethumbnail) 
+-- VALUES ('NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NUL', 
+-- 'NULL', 'NULL', 'NULL', 'NUL');
+-- #9 UPDATE orders SET shipregion = 'EuroZone' WHERE shipcountry = 'france';
+-- #10 DELETE FROM `order details` WHERE quantity = 1;
+-- #11a SELECT AVG(quantity) FROM `order details`;
+-- #11b SELECT MAX(quantity) FROM `order details`;
+-- #11c SELECT MIN(quantity) FROM `order details`;
+-- #12a SELECT AVG(quantity) FROM `order details`group by orderid;
+-- #12b SELECT MAX(quantity) FROM `order details`group by orderid;
+-- #12c SELECT MIN(quantity) FROM `order details`group by orderid;
+-- #13 SELECT customerid FROM orders WHERE orderid = 10290;
+-- #14a SELECT * FROM customers INNER JOIN orders ON customers.imagethumbnail = orders.orderid;
+-- #14b SELECT * FROM customers LEFT JOIN orders ON customers.imagethumbnail = orders.orderid;
+-- #14c SELECT * FROM customers RIGHT JOIN orders ON customers.imagethumbnail = orders.orderid;
+-- #15 SELECT orders.shipcity, orders.shipcountry FROM orders INNER JOIN employees ON 
+-- orders.shipcity = employees.city AND orders.shipcountry = employees.city WHERE 
+-- city = 'london';
+-- #16 SELECT orders.shipcity FROM orders RIGHT JOIN products ON 
+-- orders.shipcity = products.discontinued WHERE discontinued = 1;
+-- #17 SELECT firstname FROM employees WHERE reportsto IS NULL;
+-- #18 SELECT firstname FROM employees WHERE reportsto = 2;
