@@ -36,3 +36,5 @@
 -- stripped down above
 -- #17 SELECT firstname FROM employees WHERE reportsto IS NULL;
 -- #18 SELECT firstname FROM employees WHERE reportsto = 2;
+-- #18 SELECT @bossNum := EmployeeID FROM employees WHERE FirstName = 'Andrew';
+-- SELECT FirstName FROM employees WHERE ReportsTo = @bossNum;
