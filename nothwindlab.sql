@@ -1,9 +1,10 @@
 -- #1 SELECT * FROM customers;
--- #2 SELECT country FROM customers group by country;
+-- #2 SELECT country FROM customers GROUP BY country;
+-- #2 SELECT DISTINCT country FROM customers;
 -- #3 SELECT * FROM customers WHERE customerid LIKE 'BL%';
 -- #4 SELECT * FROM orders LIMIT 100;
--- #5 SELECT * FROM customers WHERE postalcode IN (1010, 12209, 05023);
--- #6 SELECT * FROM orders WHERE shipregion != 'NULL';
+-- #5 SELECT * FROM customers WHERE postalcode IN ('1010', '12209', '05023');
+-- #6 SELECT * FROM orders WHERE shipregion IS NOT NULL;
 -- #7 SELECT * FROM customers ORDER BY country, city;
 -- #8 INSERT INTO customers (customerid, companyname, contactname, contacttitle, 
 -- address, city, region, postalcode, country, phone, fax, image, imagethumbnail) 
@@ -14,17 +15,24 @@
 -- #11a SELECT AVG(quantity) FROM `order details`;
 -- #11b SELECT MAX(quantity) FROM `order details`;
 -- #11c SELECT MIN(quantity) FROM `order details`;
+-- #11d SELECT AVG(quantity), MAX(quantity), MIN(quantity) FROM `order details`;
 -- #12a SELECT AVG(quantity) FROM `order details`group by orderid;
 -- #12b SELECT MAX(quantity) FROM `order details`group by orderid;
 -- #12c SELECT MIN(quantity) FROM `order details`group by orderid;
+-- #12d SELECT AVG(quantity), MAX(quantity), MIN(quantity) FROM `order details`group by orderid;
 -- #13 SELECT customerid FROM orders WHERE orderid = 10290;
--- #14a SELECT * FROM customers INNER JOIN orders ON customers.imagethumbnail = orders.orderid;
--- #14b SELECT * FROM customers LEFT JOIN orders ON customers.imagethumbnail = orders.orderid;
--- #14c SELECT * FROM customers RIGHT JOIN orders ON customers.imagethumbnail = orders.orderid;
--- #15 SELECT orders.shipcity, orders.shipcountry FROM orders INNER JOIN employees ON 
--- orders.shipcity = employees.city AND orders.shipcountry = employees.city WHERE 
--- city = 'london';
--- #16 SELECT orders.shipcity FROM orders RIGHT JOIN products ON 
--- orders.shipcity = products.discontinued WHERE discontinued = 1;
+-- #14a SELECT * FROM orders INNER JOIN customers ON customers.customerid = orders.customerid;
+-- #14b SELECT * FROM customers LEFT JOIN customers ON customers.customerid = orders.customerid;
+-- #14c SELECT * FROM customers RIGHT JOIN customers ON customers.customerid = orders.customerid;
+-- #15 SELECT shipcity, shipcountry FROM orders INNER JOIN employees ON 
+-- orders.employeeid = employees.employeeid WHERE employees.city = 'London';
+-- #16 SELECT DISTINCT orders.ShipName FROM orders JOIN orderdetails ON orders.OrderID =
+-- orderdetails.OrderID JOIN products ON orderdetails.ProductID = products.ProductID
+-- WHERE products.Discontinued = '1' ORDER BY orders.ShipName ASC;
+-- extras above
+-- SELECT orders.ShipName FROM orders JOIN orderdetails ON orders.OrderID =
+-- orderdetails.OrderID JOIN products ON orderdetails.ProductID = products.ProductID
+-- WHERE products.Discontinued = '1';
+-- stripped down above
 -- #17 SELECT firstname FROM employees WHERE reportsto IS NULL;
 -- #18 SELECT firstname FROM employees WHERE reportsto = 2;
